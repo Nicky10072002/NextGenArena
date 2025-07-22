@@ -1,0 +1,117 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+
+main{
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #c3bed1;
+    
+}
+
+header{
+    background-color: #f2f3f4;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 0px 20px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.header-left{
+    font-size: 25px;
+}
+.header-left > img{
+  height: 100px;
+  width: 100px;
+
+}
+.header-mid a{
+    padding: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 18px;
+    color: #34495e;
+}
+.dropdown{
+  float: left;
+  overflow: hidden;
+}
+.dropdown a{
+  color:#34495e ;
+}
+.dropdown-content{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.header-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-right i{
+    padding: 10px 20px 0px 30px;
+    font-size: 18px;
+}
+.header-right>a{
+  color: #34495e;
+}
+.header-right > input{
+    color: #333;
+    background-color:#ddd;
+    
+}
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.slide-track{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider{
+    background: white;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+    height: 200px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 90%;
+}
+
+@keyframes scroll {
+    0%{
+        transform: translateY(0);
+    }    
+    100%{
+        transform: translateX(calc(-250 px * 7));
+    }
+}

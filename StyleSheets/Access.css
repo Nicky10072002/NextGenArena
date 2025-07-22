@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 30px;
+  background-image: url('img4.jpg');
+  background-size:cover;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(10px);
+}
+.form-container {
+  background-image: linear-gradient(rgb(176, 233, 217), rgb(170, 141, 195),rgb(152, 226, 152));
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(10, 20, 80, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #050433;
+}
+
+span{
+  color: red;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 2px solid #584dbc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.radio-group label {
+  font-weight: normal;
+  color: #0b133a;
+}
+
+
+button {
+  display: block;
+  margin: 25px auto 0 auto; /* top: 25px, center horizontally */
+  width: 40%;
+  background-color: #b9bde7;
+  color: white;
+  font-weight: 700;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  border: 2px solid #050433;
+}
+
+button:hover {
+  background-color: white;
+  color: #0a126f;
+  font-weight: 700;
+}
+
+p{
+  text-align: center;
+  font-size: 15px;
+
+}
+a{
+  color:rgb(17, 5, 105);
+  font-weight: 700;
+  text-decoration: none;
+}
+a:hover{
+  color:indigo;
+}
+

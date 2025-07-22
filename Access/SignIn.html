@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="/StyleSheets/Access.css">
+  <link rel="icon" type="image/x-icon" href="/Logo/icons8-alien-monster-emoji-48.png">
+</head>
+<body>
+
+  <div class="container">
+  <div class="form-container">
+    <h2>Registration Form</h2>
+
+      <form>
+      
+      <!-- Email Field -->
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"
+             required
+             title="Enter a valid email address">
+
+      <!-- Password Field -->
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"
+             required
+             pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}"
+             title="Password must be at least 8 characters long, and include at least 1 number and 1 special character."> <br><br>
+
+
+      <input type="checkbox" name="remember" id=""> Remember Me <br><br>
+
+      <!-- Submit Button -->
+      <button type="submit"><a href="home.html">Submit</a></button> <br><br><br>
+
+      <p>Create an Account <a href="signup.html">Login Here</a></p>
+
+    </form>
+    </div>
+</div>
+</body>
+</html>
