@@ -283,7 +283,6 @@
                         name="name"
                         pattern="^[A-Za-z\s\-]+$"
                         required
-                        title="Name must only contain letters, spaces, apostrophes, and hyphens. Numbers are not allowed."
                         placeholder="Enter your name">
                     <span class="error" id="nameError"></span>
 
@@ -292,7 +291,6 @@
                     <input type="email" id="email" name="email"
                         pattern="^[a-zA-Z0-9_.%-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$"
                         required
-                        title="Name must only contain letters, spaces, apostrophes, and hyphens. Numbers are not allowed."
                         placeholder="Enter email id">
                     <span class="error" id="emailError"></span>
 
@@ -340,7 +338,7 @@
         </div>
     </div>
     </footer>
-    <script src="/Logic/script.js"></script>
+    <script src="/Logic/homescript.js"></script>
     <script>
         document.getElementById("myform").addEventListener("submit", function (e) {
         e.preventDefault(); // prevent form submission

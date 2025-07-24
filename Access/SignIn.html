@@ -12,31 +12,81 @@
   <div class="form-container">
     <h2>Registration Form</h2>
 
-      <form>
+      <form id="signinform">
       
       <!-- Email Field -->
       <label for="email">Email:</label>
       <input type="email" id="email" name="email"
              required
              title="Enter a valid email address">
+      <span class="error" id="emailError"></span>
 
       <!-- Password Field -->
       <label for="password">Password:</label>
       <input type="password" id="password" name="password"
              required
              pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}"
-             title="Password must be at least 8 characters long, and include at least 1 number and 1 special character."> <br><br>
+             title="Password must be at least 8 characters long, and include at least 1 number and 1 special character."> 
+      <span class="error" id="passwordError"></span>
 
 
       <input type="checkbox" name="remember" id=""> Remember Me <br><br>
 
       <!-- Submit Button -->
-      <button type="submit"><a href="home.html">Submit</a></button> <br><br><br>
+      <button type="submit">Submit</button> <br><br>
 
       <p>Create an Account <a href="signup.html">Login Here</a></p>
 
     </form>
     </div>
 </div>
+
+<script>
+  document.getElementById("signinform").addEventListener("submit", function (e) {
+        e.preventDefault(); // prevent form submission
+
+        // Get field values
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        // Error elements
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
+
+        // Clear previous errors
+        emailError.textContent = "";
+        passwordError.textContent = "";
+
+        // Regex patterns
+        const emailPattern = /^[a-zA-Z0-9_.%-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$/;
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
+
+        switch (true) {
+
+          case email === "":
+            emailError.textContent = "Email is required.";
+            break;
+
+          case !emailPattern.test(email):
+            emailError.textContent = "Enter a valid email (e.g., name@example.com)";
+            break;
+
+          case password === "":
+            passwordError.textContent = "Message cannot be empty.";
+            break;
+
+          case !passwordPattern.test(password):
+            passwordError.textContent = "Enter a valid password (e.g., Arig@123)";
+            break;
+
+          default:
+            document.getElementById("signinform").reset();
+            setTimeout(() => {
+            window.location.href="/Pages/Home.html"
+        }, 1000);
+        }
+      });
+</script>
+
 </body>
 </html>
