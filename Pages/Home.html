@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/Logo/icons8-alien-monster-emoji-48.png">
+
 </head>
 <body>
     <header>
         <div class="header-left">
             <img src="/Logo/pngtree-company-logo-design-trademark-design-creative-logo-png-image_4569380-removebg-preview.png" alt="Company Logo">
         </div>
-        <div class="header-mid">
-            <div class="dropdown">
-                <a href="#">Home</a>
-                
-            </div>
+        <div class="navlinks" id="navlinks">
+                <div class="dropdown">
+                    <a href="#">Home</a>
+                </div>
             <!-- /*product dropdown*/ -->
             <div class="dropdown">
                 <a href="#offer">Offers</a>
@@ -48,18 +48,20 @@
                     <a href="#">Headset</a>
                 </div>
             </div>
-            <a href="#contactUs">Contact Us</a>
+            <div class="dropdown">
+                <a href="#contactUs">Contact Us</a>
+            </div>
              
         </div>
         <div class="header-right">
             <div class="search-container">
-                <input type="text" placeholder="Search Here" id="search-bar">
+                <input type="text" placeholder="Search Here" id="search-bar" autofocus>
             <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
             </div>
             <a href="/Access/SignUp.html"><i class="fa-regular fa-user"></i></a>
             <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
-        <div class="hamburger" id="hamburger">
+        <div class="hamburger" id="hamburger" >
             &#9776;
         </div>
     </header>
@@ -273,7 +275,7 @@
             <div class="form-container">
                 <h2>Contact Form</h2>
 
-                <form>
+                <form id="myform">
                     <!-- Name Field -->
                     <label for="name">Name: <span style="color: red;">*</span></label>
                     <input type="text"
@@ -281,29 +283,26 @@
                         name="name"
                         pattern="^[A-Za-z\s\-]+$"
                         required
-                        title="Name must only contain letters, spaces, apostrophes, and hyphens. Numbers are not allowed.">
+                        placeholder="Enter your name">
+                    <span class="error" id="nameError"></span>
 
                     <!-- Email Field -->
-                    <label for="email">Email: <span style="color: red;">*</span></label>
+                    <label for="email" >Email: <span style="color: red;">*</span></label>
                     <input type="email" id="email" name="email"
-                        pattern="^[a-zA-Z0-9_.%-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$"
+                        pattern="^[a-zA-Z0-9_.%-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$"
                         required
-                        title="Name must only contain letters, spaces, apostrophes, and hyphens. Numbers are not allowed.">
+                        placeholder="Enter email id">
+                    <span class="error" id="emailError"></span>
 
-                    <!-- City (Dropdown) -->
-                    <label for="city">City:</label>
-                    <select id="city" name="city" required>
-                        <option value="">--Select City--</option>
-                        <option value="Delhi">Calicut</option>
-                        <option value="Kolkata">Kolkata</option>
-                        <option value="Bangalore">Bangalore</option>
-                        <option value="Dubai">Dubai</option>
-                        <option value="Singapore">Singapore</option>
-                    </select>
+                    <!-- Message box -->
+                    <label for="message">Message:</label>
+                    <input type="text" id="message" placeholder="Your message">
+                    <span class="error" id="messageError"></span>
 
                     <!-- Submit Button -->
                     <button type="submit" class="btn"><a href="">Submit</a></button> <br><br>
-
+                    
+                    
                 </form>
             </div>
         </section>
@@ -339,6 +338,56 @@
         </div>
     </div>
     </footer>
-    <script src="/Logic/script.js"></script>
+    <script src="/Logic/homescript.js"></script>
+    <script>
+        document.getElementById("myform").addEventListener("submit", function (e) {
+        e.preventDefault(); // prevent form submission
+
+        // Get field values
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        // Error elements
+        const nameError = document.getElementById("nameError");
+        const emailError = document.getElementById("emailError");
+        const messageError = document.getElementById("messageError");
+
+        // Clear previous errors
+        nameError.textContent = "";
+        emailError.textContent = "";
+        messageError.textContent = "";
+
+        // Regex patterns
+        const namePattern = /^[A-Za-z\s\-]+$/;
+        const emailPattern = /^[a-zA-Z0-9_.%-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$/;
+
+        switch (true) {
+          case name === "":
+            nameError.textContent = "Name is required.";
+            break;
+
+          case !namePattern.test(name):
+            nameError.textContent = "Name must contain only letters and spaces.";
+            break;
+
+          case email === "":
+            emailError.textContent = "Email is required.";
+            break;
+
+          case !emailPattern.test(email):
+            emailError.textContent = "Enter a valid email (e.g., name@example.com)";
+            break;
+
+          case message === "":
+            messageError.textContent = "Message cannot be empty.";
+            break;
+
+          default:
+            alert("Form submitted successfully!");
+            document.getElementById("myform").reset();
+        }
+      });
+    </script>
 </body>
 </html>

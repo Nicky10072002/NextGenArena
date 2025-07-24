@@ -61,7 +61,7 @@ button {
   display: block;
   margin: 25px auto 0 auto; /* top: 25px, center horizontally */
   width: 40%;
-  background-color: #b9bde7;
+  background-color: #454c9f;
   color: white;
   font-weight: 700;
   border: none;
@@ -70,7 +70,6 @@ button {
   border-radius: 10px;
   cursor: pointer;
   text-align: center;
-  border: 2px solid #050433;
 }
 
 button:hover {
@@ -93,3 +92,10 @@ a:hover{
   color:indigo;
 }
 
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 3px;
+  display: block;
+  height: 18px;
+}

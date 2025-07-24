@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>form</title>
   <title>Registration Form</title>
   <link rel="stylesheet" href="/StyleSheets/Access.css">
   <link rel="icon" type="image/x-icon" href="/Logo/icons8-alien-monster-emoji-48.png">
@@ -17,23 +16,22 @@
   <div class="form-container">
     <h2>Registration Form</h2>
 
-      <form>
+      <form id="signupform">
       <!-- Name Field -->
       <label for="name">Name: <span>*</span></label>
       <input type="text"
              id="name"
              name="name"
              pattern="^[A-Za-z\s\-]+$"
-             required
-             title="Name must only contain letters, spaces, apostrophes, and hyphens. Numbers are not allowed.">
+             required>
+      <span class="error" id="nameError"></span>
 
       <!-- Email Field -->
       <label for="email">Email: <span>*</span></label>
       <input type="email" id="email" name="email"
-             required
-             pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}"
-             required
-             title="Name must only contain letters, spaces, apostrophes, and hyphens. Numbers are not allowed.">
+             pattern="^[a-zA-Z0-9_.%-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$"
+             required>
+      <span class="error" id="emailError"></span>
 
       <!-- Password Field -->
       <label for="password">Password: <span>*</span></label>
@@ -41,6 +39,7 @@
              required
              pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}"
              title="Password must be at least 8 characters long, and include at least 1 number and 1 special character.">
+      <span class="error" id="passwordError"></span>
 
       <!-- Gender (Radio) -->
       <label>Gender:</label>
@@ -62,11 +61,12 @@
       </select>
 
       <!-- Submit Button -->
-      <button type="submit"><a href="/Access/SignIn.html">Submit</a></button> <br><br>
+      <button type="submit">Submit</a></button> <br><br>
 
       <p>Have already an account? <a href="signin.html">Login Here</a></p>
     </form>
     </div>
 </div>
+<script src="/Logic/signupscript.js"></script>
 </body>
 </html>
