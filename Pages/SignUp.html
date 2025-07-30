@@ -4,24 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registration Form</title>
-  <link rel="stylesheet" href="/StyleSheets/Access.css">
-  <link rel="icon" type="image/x-icon" href="/Logo/icons8-alien-monster-emoji-48.png">
+  <link rel="stylesheet" href="../StyleSheets/Access.css">
+  <link rel="icon" type="image/x-icon" href="../Logo/icons8-alien-monster-emoji-48.png">
 </head>
 <body>
 
   <div class="main">
-    <nav>
-
-    </nav>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div class="bg bg4"></div>
   <div class="form-container">
     <h2>Registration Form</h2>
 
-      <form id="signupform">
+      <form id="signupform" action="../Backend/Connect.php" method="post">
       <!-- Name Field -->
-      <label for="name">Name: <span>*</span></label>
+      <label for="username">Name: <span>*</span></label>
       <input type="text"
-             id="name"
-             name="name"
+             id="username"
+             name="username"
              pattern="^[A-Za-z\s\-]+$"
              required>
       <span class="error" id="nameError"></span>
@@ -53,7 +54,7 @@
       <label for="city">City:</label>
       <select id="city" name="city" required>
         <option value="">--Select City--</option>
-        <option value="Delhi">Calicut</option>
+        <option value="Calicut">Calicut</option>
         <option value="Kolkata">Kolkata</option>
         <option value="Bangalore">Bangalore</option>
         <option value="Dubai">Dubai</option>
@@ -61,12 +62,12 @@
       </select>
 
       <!-- Submit Button -->
-      <button type="submit">Submit</a></button> <br><br>
+      <button type="submit">Submit</button> <br><br>
 
-      <p>Have already an account? <a href="signin.html">Login Here</a></p>
+      <p>Have already an account? <a href="../Pages/SignIn.html">Login Here</a></p>
     </form>
     </div>
 </div>
-<script src="/Logic/signupscript.js"></script>
+<script src="../Logic/signupscript.js"></script>
 </body>
 </html>
