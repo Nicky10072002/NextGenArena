@@ -5,3 +5,5 @@ Tech Stack -
     HTML
     CSS
     JS
+    PHP
+    MYSQL
