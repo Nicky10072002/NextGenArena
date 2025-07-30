@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="../StyleSheets/Access.css">
+  <link rel="icon" type="image/x-icon" href="../Logo/icons8-alien-monster-emoji-48.png">
+</head>
+<body>
+
+
+    <div class="main">
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+        <div class="bg bg4"></div>
+  <div class="container">
+    
+    <div id="toastMessage">
+      
+    </div>
+
+    </div>
+  <div class="form-container">
+    <h2>LogIn Form</h2>
+
+      <form id="signinform">
+      
+      <!-- Email Field -->
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"
+             required
+             title="Enter a valid email address">
+      <span class="error" id="emailError"></span>
+
+      <!-- Password Field -->
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"
+             required
+             pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}"
+             title="Password must be at least 8 characters long, and include at least 1 number and 1 special character."> 
+      <span class="error" id="passwordError"></span>
+
+      <input type="checkbox" name="remember" id=""> Remember Me <br><br>
+
+      <!-- Submit Button -->
+      <button type="submit">Submit</button> 
+
+      <p>Create an Account <a href="../Pages/SignUp.html">Create an Account</a></p>
+
+    </form>
+    </div>
+</div>
+
+<script>
+    function showToast(message, type = "success") {
+        const toast = document.getElementById("toastMessage");
+        toast.className = "show " + type;                        //messagae type success or error
+        toast.innerText = message;
+        setTimeout(() => {
+            toast.className = toast.className.replace("show" + type, ""); // Remove the show class after 3 seconds
+        }, 1000);
+    }
+  document.getElementById("signinform").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      // Get field values
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // Error elements
+      const emailError = document.getElementById("emailError");
+      const passwordError = document.getElementById("passwordError");
+
+      // Clear previous errors
+      emailError.textContent = "";
+      passwordError.textContent = "";
+
+      // Regex patterns
+      const emailPattern = /^[a-zA-Z0-9_.%-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$/;
+      const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
+
+      // Validation
+      let isValid = true;
+
+      if (email === "") {
+          emailError.textContent = "Email is required.";
+          isValid = false;
+      } else if (!emailPattern.test(email)) {
+          emailError.textContent = "Enter a valid email (e.g., name@example.com)";
+          isValid = false;
+      }
+
+      if (password === "") {
+          passwordError.textContent = "Password is required.";
+          isValid = false;
+      } else if (!passwordPattern.test(password)) {
+          passwordError.textContent = "Enter a valid password (e.g., Arig@123)";
+          isValid = false;
+      }
+
+      // If validation passes, submit to PHP
+      if (isValid) {
+          let formData = new FormData();
+          formData.append("email", email);
+          formData.append("password", password);
+
+          try {
+              let response = await fetch("../Backend/login.php", {
+                  method: "POST",
+                  body: formData
+              });
+              let result = await response.text();
+              console.log(result);
+              
+              // If login successful, redirect to home page
+              if (result.includes("✅ Login successful!")) {
+                    showToast("✅Login successful! Redirecting...", "success");
+                  setTimeout(() => {
+                      window.location.href = "../Pages/Home.html";
+                  }, 2000);
+                  
+              }
+              else {
+                    showToast("❌ " + result, "error");
+              }
+          } catch (error) {
+                
+                
+                showToast("❌ An error occurred. Please try again.", "error");
+          }
+      }
+  });
+</script>
+
+</body>
+</html>
