@@ -81,6 +81,83 @@ header{
 .header-right>a{
   color: #34495e;
 }
+
+/* User authentication styles */
+#user-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 5px 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 25px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.user-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.username {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.logout-btn {
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+.logout-btn i {
+    font-size: 16px;
+}
+
+/* Responsive design for user section */
+@media (max-width: 768px) {
+    .user-info {
+        flex-direction: column;
+        gap: 5px;
+        padding: 8px 12px;
+    }
+    
+    .username {
+        max-width: 120px;
+        font-size: 12px;
+    }
+    
+    .logout-btn {
+        padding: 6px;
+    }
+    
+    .logout-btn i {
+        font-size: 14px;
+    }
+}
 #search-bar{
     width: 0;
     padding: 5px;

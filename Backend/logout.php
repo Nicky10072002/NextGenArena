@@ -6,9 +6,8 @@ session_unset(); // Unset all session variables
 // Destroy the session
 session_destroy();
 
-// Redirect to the login page or home page
-header("Location: ../Pages/SignIn.html");
+// Redirect to the home page
+header("Location: ../Pages/Home.html");
 exit;
-echo "✅ You have been logged out successfully.";
 
 ?>
