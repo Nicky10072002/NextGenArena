@@ -61,7 +61,9 @@
                 <input type="text" placeholder="Search Here" id="search-bar" autofocus>
             <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
             </div>
-            <a href="../Pages/SignUp.html"><i class="fa-regular fa-user"></i></a>
+            <div id="user-section">
+                <!-- This will be dynamically populated based on login status -->
+            </div>
             <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
         <div class="hamburger" id="hamburger" >
@@ -358,6 +360,65 @@
     </footer>
     <script src="../Logic/homescript.js"></script>
     <script>
+        // Check user authentication status on page load
+        async function checkAuthStatus() {
+            try {
+                const response = await fetch('../Backend/check_session.php');
+                const data = await response.json();
+                
+                const userSection = document.getElementById('user-section');
+                
+                if (data.logged_in) {
+                    // User is logged in - show logout option
+                    userSection.innerHTML = `
+                        <div class="user-info">
+                            <span class="username">Welcome, ${data.username}!</span>
+                            <a href="../Backend/logout.php" class="logout-btn" title="Logout">
+                                <i class="fa-solid fa-sign-out-alt"></i>
+                            </a>
+                        </div>
+                    `;
+                    
+                    // Display JWT token in console
+                    if (data.token) {
+                        console.log('🔐 JWT Token (Active Session):', data.token);
+                        console.log('📋 Token Details:');
+                        console.log('   - Issuer: http://localhost');
+                        console.log('   - User: ' + data.username);
+                        console.log('   - Email: ' + data.email);
+                        console.log('   - Expires: 1 hour from login');
+                        console.log('   - Status: Active');
+                    } else {
+                        console.log('❌ No JWT token found in session');
+                    }
+                } else {
+                    // User is not logged in - show login/signup options
+                    userSection.innerHTML = `
+                        <a href="../Pages/SignIn.html" title="Login">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                    `;
+                    console.log('🔓 User not logged in - No JWT token available');
+                }
+            } catch (error) {
+                console.error('Error checking auth status:', error);
+                // Fallback to login option if there's an error
+                const userSection = document.getElementById('user-section');
+                userSection.innerHTML = `
+                    <a href="../Pages/SignIn.html" title="Login">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                `;
+            }
+        }
+
+        // Call the function when page loads
+        document.addEventListener('DOMContentLoaded', checkAuthStatus);
+        
+        // Check auth status periodically to keep token visible in console
+        setInterval(checkAuthStatus, 30000); // Check every 30 seconds
+
+        // Contact form validation
         document.getElementById("myform").addEventListener("submit", function (e) {
         e.preventDefault(); // prevent form submission
 

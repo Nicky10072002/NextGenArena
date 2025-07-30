@@ -116,9 +116,11 @@
               // If login successful, redirect to home page
               if (result.includes("✅ Login successful!")) {
                     showToast("✅Login successful! Redirecting...", "success");
+                    console.log('🔐 Login successful! JWT token generated and stored.');
+                    console.log('📋 Token will be displayed in console on home page.');
                   setTimeout(() => {
                       window.location.href = "../Pages/Home.html";
-                  }, 2000);
+                  }, 1500);
                   
               }
               else {
